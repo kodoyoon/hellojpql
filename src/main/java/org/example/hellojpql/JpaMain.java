@@ -1,9 +1,6 @@
 package org.example.hellojpql;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
 public class JpaMain {
 
@@ -18,9 +15,12 @@ public class JpaMain {
         try {
             Member member= new Member();
             member.setUsername("member1");
+            member.setAge(10);
             em.persist(member);
 
-            em.flush();
+           TypedQuery<Member> query = em.createQuery("select m from Member  m", Member.class); //Typequery : 반환 타입이 명확할때 사용
+
+
 
             tx.commit();
         } catch (Exception e) {
