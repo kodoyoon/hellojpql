@@ -18,8 +18,10 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class); //Typequery : 반환 타입이 명확할때 사용
-            Member result = query.getSingleResult(); //결과가 정확히 하나, 단일객체 반환
+            TypedQuery<Member> query = em.createQuery("select m from Member m where m.username = :username", Member.class);
+          query.setParameter("username" , "member1");
+          Member singleResult = query.getSingleResult();
+            System.out.println("singleResult = " + singleResult.getUsername());
 
             tx.commit();
         } catch (Exception e) {
