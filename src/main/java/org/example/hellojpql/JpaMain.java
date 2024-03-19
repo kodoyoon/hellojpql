@@ -2,6 +2,8 @@ package org.example.hellojpql;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public class JpaMain {
 
     public static void main(String[] args) {
@@ -19,9 +21,11 @@ public class JpaMain {
             em.persist(member);
 
             TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class); //Typequery : 반환 타입이 명확할때 사용
-          //  TypedQuery<Member> query= em.createQuery("select m.username , m.age from Member m"); //query : 반환 타입이 명확하지않을때 사용
-            Query query3 = em.createQuery("select m.username, m.age from Member  m"); //타입정보를 받을 수 없을때
+            List<Member> resultList = query.getResultList(); // 결과가 하나 이상일 때, 리스트 반환, 결과가 없으면 빈 리스트 반환
 
+            for (Member member1 : resultList) {
+                System.out.println("member1 = " + member1);
+            }
 
             tx.commit();
         } catch (Exception e) {
