@@ -18,7 +18,8 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-           TypedQuery<Member> query = em.createQuery("select m from Member  m", Member.class); //Typequery : 반환 타입이 명확할때 사용
+            TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class); //Typequery : 반환 타입이 명확할때 사용
+            TypedQuery<Member> query = em.createQuery("select m.username , m.age from Member m"); //query : 반환 타입이 명확하지않을때 사용
 
 
 
