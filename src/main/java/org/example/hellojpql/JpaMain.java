@@ -2,8 +2,6 @@ package org.example.hellojpql;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 public class JpaMain {
 
     public static void main(String[] args) {
@@ -21,7 +19,7 @@ public class JpaMain {
             em.persist(member);
 
             TypedQuery<Member> query = em.createQuery("select m from Member m", Member.class); //Typequery : 반환 타입이 명확할때 사용
-
+            Member result = query.getSingleResult(); //결과가 정확히 하나, 단일객체 반환
 
             tx.commit();
         } catch (Exception e) {
