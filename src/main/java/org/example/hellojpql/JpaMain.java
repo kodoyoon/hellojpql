@@ -34,7 +34,8 @@ public class JpaMain {
 
             em.flush();
             em.clear();
-            String query = "select m from Member m, Team t where m.username = t.name ";
+            String query = "select m from Member m left join m.team t on  t.name = 'teamA'";
+
            List<Member> result = em.createQuery(query,Member.class)
                .setFirstResult(1)
                         .setMaxResults(10)
