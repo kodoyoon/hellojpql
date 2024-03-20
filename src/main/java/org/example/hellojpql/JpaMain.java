@@ -36,7 +36,7 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select 'a' || 'b' From Member  m";
+            String query = "select concat('a' , 'b') From Member  m";
 
          List<String> result =    em.createQuery(query, String.class)
                     .getResultList();
