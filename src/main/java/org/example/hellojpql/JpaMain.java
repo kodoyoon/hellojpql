@@ -23,11 +23,10 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            List<Member> result = em.createQuery("select m from Member m" , Member.class)
+            List<Team> result = em.createQuery("select m.team from Member m" , Team.class)
                     .getResultList();
 
-            Member findMember = result.get(0);
-            findMember.setAge(20);
+
 
             tx.commit();
         } catch (Exception e) {
