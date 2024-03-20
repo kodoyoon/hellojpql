@@ -34,7 +34,7 @@ public class JpaMain {
 
             em.flush();
             em.clear();
-            String query = "select mm from (select m.age from Member  m) as mm";
+            String query = "select mm from (select m.age from Member m) as mm";
 
            List<Member> result = em.createQuery(query,Member.class)
                .setFirstResult(1)
