@@ -1,6 +1,9 @@
 package org.example.hellojpql;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class JpaMain {
             em.clear();
 
            List<Member> result = em.createQuery("select m from Member  m order by m.age desc",Member.class)
-                    .setFirstResult(0)
+               .setFirstResult(1)
                         .setMaxResults(10)
                             .getResultList();
 
