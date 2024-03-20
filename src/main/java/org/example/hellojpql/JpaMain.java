@@ -23,12 +23,15 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-             List<MemberDTO> result =  em.createQuery("select new org.example.hellojpql.MemberDTO(m.username, m.age) from Member m ",MemberDTO.class)
-                    .getResultList();
+           List<Member> result = em.createQuery("select m from Member  m order by m.age desc",Member.class)
+                    .setFirstResult(0)
+                        .setMaxResults(10)
+                            .getResultList();
 
-           MemberDTO memberDTO = result.get(0);
-            System.out.println("memberDTO = " + memberDTO.getUsername());
-            System.out.println("memberDTO = " + memberDTO.getAge());
+            System.out.println("result.size = " + result.size());
+            for (Member member1 : result) {
+                System.out.println("member1 = " + member1 );
+            }
 
 
             tx.commit();
