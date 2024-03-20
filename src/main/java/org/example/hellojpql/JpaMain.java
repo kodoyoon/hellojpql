@@ -18,10 +18,14 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member= new Member();
-            member.setUsername("member1");
-            member.setAge(10);
-            em.persist(member);
+
+            for(int i = 0; i< 100; i++){
+                Member member= new Member();
+                member.setUsername("member" + i);
+                member.setAge(i);
+                em.persist(member);
+            }
+
 
             em.flush();
             em.clear();
