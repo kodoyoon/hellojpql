@@ -6,6 +6,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
 import java.util.List;
+import java.util.Objects;
 
 public class JpaMain {
 
@@ -24,7 +25,7 @@ public class JpaMain {
 
 
             Member member = new Member();
-            member.setUsername("member");
+            member.setUsername("teamA");
             member.setAge(10);
 
             member.setTeam(team);
@@ -34,12 +35,18 @@ public class JpaMain {
 
             em.flush();
             em.clear();
-            String query = "select mm from (select m.age from Member m) as mm";
+            String query = "select m.username, 'HELLO' , TRUE From Member m";
+            List<Object[]> result = em.createQuery(query)
+                .getResultList();
 
-           List<Member> result = em.createQuery(query,Member.class)
-               .setFirstResult(1)
-                        .setMaxResults(10)
-                            .getResultList();
+            for(Object[] objects : result) {
+                System.out.println("objects = " + objects[0]);
+                System.out.println("objects = " + objects[1]);
+                System.out.println("objects = " + objects[2]);
+
+            }
+
+
 
 
             tx.commit();
