@@ -28,7 +28,8 @@ public class JpaMain {
 
             Object o = resultList.get(0);
             Object[] result = (Object[]) o;
-            System.out.println("result = " + result[0]);
+            System.out.println("age = " + result[0]);
+            System.out.println("username = " + result[1]);
 
             tx.commit();
         } catch (Exception e) {
