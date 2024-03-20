@@ -1,9 +1,6 @@
 package org.example.hellojpql;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -31,7 +28,9 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select size(t.memebrs) From  Team  t";
+
+
+            String query = "select index(t.memebrs) From  Team  t";
 
             List<Integer> result = em.createQuery(query, Integer.class)
                 .getResultList();
