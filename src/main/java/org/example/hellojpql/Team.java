@@ -20,7 +20,7 @@ public class Team {
         return memebrs;
     }
 
-    public void setMemebrs(List<Member> memebrs) {
+    public void setMembers(List<Member> memebrs) {
         this.memebrs = memebrs;
     }
 
