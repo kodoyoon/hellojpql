@@ -54,6 +54,9 @@ public class JpaMain {
 
             for (Team team : result) {
                 System.out.println("team = " + team.getName() + "|members=" + team.getMemebrs().size());
+                for(Member member : team.getMemebrs()){
+                    System.out.println("-  member = " + member);
+                }
             }
 
             tx.commit();
