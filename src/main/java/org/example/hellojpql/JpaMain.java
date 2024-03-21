@@ -47,9 +47,11 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select t From Team t join fetch  t.memebrs as m ";
+            String query = "select t From Team t join fetch  t.memebrs m";
 
             List<Team> result = em.createQuery(query, Team.class)
+                .setFirstResult(0)
+                .setMaxResults(1)
                 .getResultList();
 
             System.out.println("result = " + result.size());
