@@ -30,7 +30,7 @@ public class JpaMain {
 
 
 
-            String query = "select index(t.memebrs) From  Team  t";
+            String query = "select  m.username From Member  m";
 
             List<Integer> result = em.createQuery(query, Integer.class)
                 .getResultList();
