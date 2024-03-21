@@ -44,8 +44,9 @@ public class JpaMain {
             int resultCount = em.createQuery("update Member m set m.age = 20") //db 에만 반영
                 .executeUpdate();
 
-           Member findMember =  em.find(Member.class, member1.getId());
+            em.clear();
 
+           Member findMember =  em.find(Member.class, member1.getId());
             System.out.println("findMember = " + findMember.getAge());
 
 
