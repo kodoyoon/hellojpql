@@ -47,7 +47,7 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select t From Team t join fetch  t.memebrs m";
+            String query = "select m From Member  m join fetch m.team t"; //회원에서 팀으로 가는건 다대일이니까 문제 없음 -> 페이징 가능
 
             List<Team> result = em.createQuery(query, Team.class)
                 .setFirstResult(0)
