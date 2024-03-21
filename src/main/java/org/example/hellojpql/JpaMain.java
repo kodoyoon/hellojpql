@@ -2,6 +2,7 @@ package org.example.hellojpql;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -28,15 +29,13 @@ public class JpaMain {
             em.flush();
             em.clear();
 
+            String query = "select t.memebrs From Team t";
 
-
-            String query = "select  m.team From Member  m";
-
-            List<Integer> result = em.createQuery(query, Integer.class)
+            Collection result = em.createQuery(query, Collection.class)
                 .getResultList();
 
-            for (Integer s : result) {
-                System.out.println("s = " + s);
+            for (Object o : result) {
+                System.out.println("o = " + o);
             }
 
             tx.commit();
