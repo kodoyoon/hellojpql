@@ -5,9 +5,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-import java.util.Collection;
-import java.util.List;
-
 
 public class JpaMain {
 
@@ -47,12 +44,8 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-          List<Member> resultList = em.createNamedQuery("Member.findByUsername" , Member.class)
-                  .setParameter("username" , "회원1")
-                      .getResultList();
-            for (Member member : resultList) {
-                System.out.println("member = " + member);
-            }
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                .executeUpdate();
 
             tx.commit();
         } catch (Exception e) {
