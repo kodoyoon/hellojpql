@@ -47,6 +47,8 @@ public class JpaMain {
             int resultCount = em.createQuery("update Member m set m.age = 20")
                 .executeUpdate();
 
+            System.out.println("resultCount = " + resultCount);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
