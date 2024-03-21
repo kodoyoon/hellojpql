@@ -46,7 +46,7 @@ public class JpaMain {
 
             em.clear();
 
-           Member findMember =  em.find(Member.class, member1.getId());
+           Member findMember =  em.find(Member.class, member1.getId()); //영속성 컨텍스트에 없기 때문에 db에서 새롭게 가져옴
             System.out.println("findMember = " + findMember.getAge());
 
 
