@@ -41,8 +41,7 @@ public class JpaMain {
             member3.setTeam(teamB);
             em.persist(member3);
 
-            em.flush();
-            em.clear();
+            //FLUSH 자동 호출
 
             int resultCount = em.createQuery("update Member m set m.age = 20")
                 .executeUpdate();
