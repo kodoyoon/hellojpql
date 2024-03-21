@@ -41,16 +41,14 @@ public class JpaMain {
             member3.setTeam(teamB);
             em.persist(member3);
 
-
-
-            int resultCount = em.createQuery("update Member m set m.age = 20")
+            int resultCount = em.createQuery("update Member m set m.age = 20") //db 에만 반영
                 .executeUpdate();
 
-            System.out.println("resultCount = " + resultCount);
+           Member findMember =  em.find(Member.class, member1.getId());
 
-            System.out.println("member1.getAge() : " + member1.getAge());
-            System.out.println("member2.getAge() : " + member2.getAge());
-            System.out.println("member3.getAge() : " + member3.getAge());
+            System.out.println("findMember = " + findMember.getAge());
+
+
 
             tx.commit();
         } catch (Exception e) {
